@@ -16,18 +16,18 @@
 		<h3>Connexion</h3>
 		<p>Vous ne pouvez pas vous inscrire, juste vous connecter !!!</p>
 
-		<form method="post" action="">
+		<form method="post" action="login.php">
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-6 col-lg-4">
-						<label for="pseudo" > Pseudo ou Email </label>
+						<label for="pseudo" > Pseudo </label>
 						<input type="text" name="pseudo" class="form-control">
 
-						<label for="password"> Mot de passe </label>
-						<input type="text" name="password" class="form-control">
+						<label for="mdp"> Mot de passe </label>
+						<input type="password" name="mdp" class="form-control">
 
 						<div class="row">
-						<div class="col-md-offset-5 col-md-7"><br>
+							<div class="col-md-offset-5 col-md-7"><br>
 								<button type="submit" class="btn btn-success">Valider</button>
 							</div>
 						</div>
