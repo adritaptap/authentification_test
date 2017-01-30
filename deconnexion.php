@@ -2,9 +2,9 @@
 
 session_start();
 
-
 session_destroy();
 
+setcookie("auth", "", time() - 3600);
 
 header('Refresh: 3; url=index.php');
 

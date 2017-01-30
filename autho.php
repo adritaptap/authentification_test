@@ -31,6 +31,8 @@ session_start();
 
 			$login = $_SESSION['pseudo'];
 
+			var_dump($_COOKIE['auth']);
+
 			try
 
 			{

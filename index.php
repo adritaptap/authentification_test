@@ -8,6 +8,12 @@ session_start();
 
 }
 
+if (isset($_COOKIE['auth'])){
+
+	$_SESSION['pseudo'] = $_COOKIE['auth'];
+	header('Location: autho.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +44,7 @@ session_start();
 						<label for="mdp"> Mot de passe </label>
 						<input type="password" name="mdp" class="form-control fond">
 							
-						<input type="checkbox" name="souvenir" value="setcookie"> se souvenir de moi
+						<input type="checkbox" name="remember" value="setcookie"> se souvenir de moi
 
 						<div class="row">
 							<div class="col-md-offset-5 col-md-7"><br>

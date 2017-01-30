@@ -1,22 +1,5 @@
 <?php 
-	session_start();
-
-	
-
- ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>test authentification</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-</head>
-<body>
-
-	<?php
+session_start();
 
 	
 	$pseudo = $_POST['pseudo'];
@@ -42,7 +25,13 @@
 
 		{
 			$_SESSION['pseudo'] = htmlspecialchars($_POST['pseudo']);
-			$_SESSION['mdp'] = htmlspecialchars($_POST['mdp']);
+			
+			if (isset($_POST['remember']))
+			{	
+				setcookie('auth',  $_SESSION['pseudo'], time() + 180, null, null, false, true);
+			} 	
+
+
 			header('Location: autho.php');
 		}
 
@@ -51,7 +40,16 @@
 	// $request->closeCursor();
 	?>
 
-	
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test authentification</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
 	<div class="container">
 		<h1>Votre mot de passe ou votre identifant n'est pas correct</h1>
 		<a href="index.php" class="btn btn-danger">Essayer de nouveau</a>
