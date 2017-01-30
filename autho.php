@@ -1,3 +1,8 @@
+<?php 
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,40 +14,60 @@
 
 </head>
 <body>
-	<div class="container content">
-		<h1>Bienvenue sur La page de Le site.</h1>
-		<h2>Un contenue exclusif rien que pour vous.</h2>
+	<?php 
 
-		
-		
-		<?php
+	if (isset($_SESSION['pseudo']))
+	{
 
-		$id = $_GET['id'];
+		?>
 
-		try
-
-		{
-			$bdd = new PDO('mysql:host=localhost;dbname=auth_test;charset=utf8', 'root', 'root', 
-				array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-		}
-		catch(Exception $e)
-		{
-			die('Erreur : '.$e->getMessage());
-		}
+		<div class="container content">
+			<h1>Bienvenue sur La page de Le site.</h1>
+			<h2>Un contenu exclusif rien que pour vous.</h2>
 
 
-		$req = $bdd->prepare('SELECT * FROM users WHERE id = ?');
-		$req->execute(array($_GET['id']));
 
-		$donnees = $req->fetch();
+			<?php
+
+			$login = $_SESSION['pseudo'];
+
+			try
+
+			{
+				$bdd = new PDO('mysql:host=localhost;dbname=auth_test;charset=utf8', 'root', 'root', 
+					array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+			}
+			catch(Exception $e)
+			{
+				die('Erreur : '.$e->getMessage());
+			}
 
 
-		echo "<h3> Bonjour " . $donnees['prenom'] . " " . $donnees['nom'] . ".</h3>";
+			$req = $bdd->prepare('SELECT * FROM users WHERE pseudo = ?');
+			$req->execute(array($login));
 
-	
+			$donnees = $req->fetch();
+
+
+			echo "<h3> Bonjour " . $donnees['prenom'] . " " . $donnees['nom'] . ".</h3>";
+
+
+			?>
+
+			<a href="deconnexion.php" class="btn btn-danger">Deconnexion</a>
+		</div>
+
+		<?php  
+	}
+
+	else {
+
+		echo "<div class='container content'><h1>Vous devez être connecté pour acceder à cette page !</h1>";
+		echo "<a href='index.php' class='btn btn-danger'>Retiourner à l'accueil</a></div>";
+
+	}
+
 	?>
-
-	<a href="index.php" class="btn btn-danger">Deconnxeion</a>
-</div>
 </body>
 </html>
+

@@ -1,3 +1,10 @@
+<?php 
+	session_start();
+
+	
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +19,8 @@
 	<?php
 
 	
-	$pseudo = htmlspecialchars($_POST['pseudo']);
-	$mdp = strip_tags($_POST['mdp']); 
+	$pseudo = $_POST['pseudo'];
+	$mdp = $_POST['mdp']; 
 	
 	try
 
@@ -31,11 +38,12 @@
 
 	while ($donnees = $req->fetch()) {
 
-		if (($donnees['pseudo'] == $pseudo) && ($donnees['mdp']) == $mdp)
+		if (($donnees['pseudo'] == $pseudo) && ($donnees['mdp'] == $mdp))
 
 		{
-			$id = $donnees['id'];
-			header('Location: autho.php?id=' . $id);
+			$_SESSION['pseudo'] = htmlspecialchars($_POST['pseudo']);
+			$_SESSION['mdp'] = htmlspecialchars($_POST['mdp']);
+			header('Location: autho.php');
 		}
 
 	};

@@ -1,3 +1,15 @@
+<?php  
+session_start();
+
+	if (isset($_SESSION['pseudo']))
+{
+
+	header('Location: autho.php');
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,10 +33,12 @@
 				<div class="row">
 					<div class="col-md-6 col-lg-4">
 						<label for="pseudo" > Pseudo </label>
-						<input type="text" name="pseudo" class="form-control">
+						<input type="text" name="pseudo" class="form-control fond">
 
 						<label for="mdp"> Mot de passe </label>
-						<input type="password" name="mdp" class="form-control">
+						<input type="password" name="mdp" class="form-control fond">
+							
+						<input type="checkbox" name="souvenir" value="setcookie"> se souvenir de moi
 
 						<div class="row">
 							<div class="col-md-offset-5 col-md-7"><br>

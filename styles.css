@@ -1,14 +1,21 @@
-
-.content {
-
-	background-color: rgba(255,255,255, 0.2);
-	color : #fff;
-
-}
-
 body {
 
 	background-image: url("images/fondp.jpg");
 
 }
+
+.content {
+
+	background-color: rgba(0, 0, 0, 0.2);
+	color : #fff;
+
+}
+
+.fond {
+	background-color: rgba(0, 0, 0, 0);
+	color: #fff;
+}
+
+
+
 
